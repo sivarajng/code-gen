@@ -96,11 +96,11 @@ let charset = (name) => {
     return charsets[name];
 }
 
-let voucher_codes = {
+let voucheCodes = {
     generate: generate,
     charset: charset
 };
 
 
 
-module.exports = voucher_codes;
+module.exports = voucheCodes;

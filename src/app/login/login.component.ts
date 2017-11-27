@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ngMod } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 
@@ -9,21 +9,23 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 })
 export class LoginComponent implements OnInit {
 
-  private user:object = {user:'',password:''};
-  private error:String = '';
-  constructor(private router: Router) { }
+  private user: object;
+  private error: String = '';
+  constructor(private router: Router) {
+    this.user = { email: '', password: '' };
+  }
 
   ngOnInit() {
   }
 
-  login(){
+  login() {
 
-    if(){
-      localStorage.setItem('currentUser','currentUser');
+    if (this.user.email == 'charan' && this.user.password == 'charan') {
+      localStorage.setItem('currentUser', 'currentUser');
       this.router.navigate(['/profile']);
     }
-    else{
-
+    else {
+      this.error = "Invalid email/password"
     }
 
   }

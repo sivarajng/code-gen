@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     $(document).ready(function(res) {
-      $('.parallax').parallax();
+      // $('.parallax').parallax();
     });
   }
 

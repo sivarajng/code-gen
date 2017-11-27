@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
+import { GlobalService } from '../service/global';
 import * as $ from 'jquery';
 
 @Component({
@@ -8,11 +10,18 @@ import * as $ from 'jquery';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor() { }
+  isAuthorized: boolean = false;
+  constructor(private globalService: GlobalService) {
+    this.isAuthorized = this.globalService.checkAuthorization();
+  }
+
+  logout() {
+    alert('logout');
+  }
 
   ngOnInit() {
-    $(document).ready(function(res) {
-      $('.button-collapse').sideNav();
+    $(document).ready(function (res) {
+      // $('.button-collapse').sideNav();
     });
   }
 

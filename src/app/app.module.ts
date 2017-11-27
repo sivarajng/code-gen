@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import 'materialize-css/dist/js/materialize.js'
 import { MaterializeModule } from 'angular2-materialize';
@@ -14,6 +15,7 @@ import { SignupComponent } from './signup/signup.component';
 
 import { appRoutes } from './app.routes';
 import { AuthGuard } from './guard/auth.guard';
+import { GlobalService } from './service/global';
 
 @NgModule({
   declarations: [
@@ -27,9 +29,10 @@ import { AuthGuard } from './guard/auth.guard';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     appRoutes
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,GlobalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
