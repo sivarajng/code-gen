@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  private user:object = {user:'',password:''};
+  private error:String = '';
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  login(){
+
+    if(){
+      localStorage.setItem('currentUser','currentUser');
+      this.router.navigate(['/profile']);
+    }
+    else{
+
+    }
+
+  }
 }

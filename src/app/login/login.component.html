@@ -19,15 +19,15 @@
 
             <div class='row'>
               <div class='input-field col s12'>
-                <input class='validate' type='email' name='email' id='email' />
-                <label for='email'>Enter your email</label>
+                <input class='validate' type='email' name='email' id='email' [(ngModel)]="user.email"/>
+                <label for='email'>email</label>
               </div>
             </div>
 
             <div class='row'>
               <div class='input-field col s12'>
-                <input class='validate' type='password' name='password' id='password' />
-                <label for='password'>Enter your password</label>
+                <input class='validate' type='password' name='password' id='password' [(ngModel)]="user.password"/>
+                <label for='password'>password</label>
               </div>
               <label style='float: right;'>
                 <a class='pink-text' href='#!'>
@@ -39,7 +39,7 @@
             <br />
             <div>
               <div class='row'>
-                <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Login</button>
+                <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo' (click)="login()">Login</button>
               </div>
             </div>
           </form>
