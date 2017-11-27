@@ -16,6 +16,7 @@ class VoucherGenerator {
     prefix;
     postfix;
     pattern;
+    charset;
     constructor(config) {
         config = config || {};
         this.count = config.count || 1;
@@ -49,17 +50,7 @@ class VoucherGenerator {
         return res;
     }
 
-    Config(config) {
-        config = config || {};
-        this.count = config.count || 1;
-        this.length = config.length || 8;
-        this.charset = config.charset || this.charset("alphanumeric");
-        this.prefix = config.prefix || "";
-        this.postfix = config.postfix || "";
-        this.pattern = config.pattern || this.repeat("#", this.length);
-    }
-
-    generateOne(config) {
+    static generateOne(config) {
         var code = config.pattern.split('').map(function (char) {
             if (char === '#') {
                 return this.randomElem(config.charset);
@@ -70,7 +61,7 @@ class VoucherGenerator {
         return config.prefix + code + config.postfix;
     }
 
-    isFeasible(charset, pattern, count) {
+    static isFeasible(charset, pattern, count) {
         return Math.pow(charset.length, (pattern.match(/#/g) || []).length) >= count;
     }
 
@@ -81,13 +72,13 @@ class VoucherGenerator {
 let generate = (config) => {
     config = new VoucherGenerator(config);
     var count = config.count;
-    if (!this.isFeasible(config.charset, config.pattern, config.count)) {
+    if (!VoucherGenerator.isFeasible(config.charset, config.pattern, config.count)) {
         throw new Error("Not possible to generate requested number of codes.");
     }
 
     var codes = {};
     while (count > 0) {
-        var code = this.generateOne(config);
+        var code = VoucherGenerator.generateOne(config);
         if (codes[code] === undefined) {
             codes[code] = true;
             count--;
