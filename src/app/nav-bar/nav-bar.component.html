@@ -15,17 +15,16 @@
        
           <li routerLinkActive="active"><a routerLink="/home"  style="color:#fff" >Home</a></li>
           <li *ngIf="!isAuthorized" routerLinkActive="active"><a routerLink="/login"  style="color:#fff" >Login</a></li>
-          <li *ngIf="isAuthorized" routerLinkActive="active"><a routerLink="/login"  style="color:#fff" >Logout</a></li>
-          <li routerLinkActive="active"><a routerLink="/profile"  style="color:#fff" >My Account</a></li>
-
+          <li *ngIf="isAuthorized" routerLinkActive="active"><a routerLink="/profile"  style="color:#fff" >My Account</a></li>
+          <li *ngIf="isAuthorized" routerLinkActive="active"><a (click)="logout()"  style="color:#fff" >Logout</a></li>
       
       </ul>
       <ul class="side-nav" id="mobile-demos">
          
           <li routerLinkActive="active"><a routerLink="/home"  style="color:#1b202e" >Home</a></li>
           <li *ngIf="!isAuthorized" routerLinkActive="active"><a routerLink="/login"  style="color:#1b202e" >Login</a></li>
+          <li *ngIf="isAuthorized" routerLinkActive="active"><a routerLink="/profile"  style="color:#1b202e" >My Account</a></li>
           <li *ngIf="isAuthorized" routerLinkActive="active"><a (click)="logout()"  style="color:#1b202e" >Logout</a></li>
-          <li routerLinkActive="active"><a routerLink="/profile"  style="color:#1b202e" >My Account</a></li>
         </ul>
     </div>
   </nav>

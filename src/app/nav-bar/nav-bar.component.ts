@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { GlobalService } from '../service/global';
-import * as $ from 'jquery';
+// import * as $ from 'jquery';
+declare var $:any;
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,18 +12,23 @@ import * as $ from 'jquery';
 export class NavBarComponent implements OnInit {
 
   isAuthorized: boolean = false;
-  constructor(private globalService: GlobalService) {
-    this.isAuthorized = this.globalService.checkAuthorization();
+  obser: any;
+  constructor(private router: Router, private globalService: GlobalService) {
+    this.obser = this.globalService.checkAuthorization();
   }
 
   logout() {
-    alert('logout');
+    localStorage.clear();
+    this.globalService.setAuthorization(false);
+    this.router.navigate(['/']);
   }
 
   ngOnInit() {
     $(document).ready(function (res) {
-      // $('.button-collapse').sideNav();
+      $('.button-collapse').sideNav();
     });
+
+    this.obser.subscribe((val: boolean) => { this.isAuthorized = val; console.log('is auth : ', val) })
   }
 
 }

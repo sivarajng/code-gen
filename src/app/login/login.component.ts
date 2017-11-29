@@ -1,5 +1,6 @@
-import { Component, OnInit, ngMod } from '@angular/core';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { GlobalService } from '../service/global';
 
 
 @Component({
@@ -9,10 +10,10 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 })
 export class LoginComponent implements OnInit {
 
-  private user: object;
-  private error: String = '';
-  constructor(private router: Router) {
-    this.user = { email: '', password: '' };
+  public user: any;
+  public error: String = '';
+  constructor(private router: Router, private globalService: GlobalService) {
+    this.user = { username: '', password: '' };
   }
 
   ngOnInit() {
@@ -20,8 +21,9 @@ export class LoginComponent implements OnInit {
 
   login() {
 
-    if (this.user.email == 'charan' && this.user.password == 'charan') {
+    if (this.user.username == 'charan' && this.user.password == 'charan') {
       localStorage.setItem('currentUser', 'currentUser');
+      this.globalService.setAuthorization(true);
       this.router.navigate(['/profile']);
     }
     else {

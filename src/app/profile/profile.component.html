@@ -1,3 +1,53 @@
-<p>
-  profile works!
-</p>
+<div class="blue-grey lighten-4" style="height:90vh">
+  <div class="section"></div>
+
+  <div class="row">
+    <div class="col s12 m3 offset-m1 z-depth-2">
+      <ul class="collection margin">
+        <li class="collection-item deep-orange white-text">Hi Charan !</li>
+        <li class="collection-item" (click)="goTo('Dashboard')">Dashboard</li>
+        <li class="collection-item" (click)="goTo('My Vouchers')">My Vouchers</li>
+      </ul>
+    </div>
+
+    <div class="col s1"></div>
+
+    <div class="col s12 m6 z-depth-2 white">
+      <ul class="collection margin">
+        <li class="collection-item deep-orange white-text">{{tabTitle}}</li>
+      </ul>
+      <div *ngIf="tabTitle=='Dashboard'">
+        <div class="card-panel">
+          <span class="">Welcome Charan ! </span>
+          <h4>Your wallet amount is </h4>
+          <h1 class="deep-orange-text">
+            <span style="font-size: 30px;vertical-align:top ">₹</span> 1600 </h1>
+        </div>
+      </div>
+      <div *ngIf="tabTitle=='My Vouchers'">
+
+        <div class="card-panel">
+          <form>
+            <div class="input-field">
+              <select>
+                <option value="" disabled selected>Choose your amount</option>
+                <option value="1">₹ 500</option>
+                <option value="2">₹ 1000</option>
+                <option value="3">₹ 1500</option>
+                <option value="3">₹ 2000</option>
+              </select>
+              <label>Payment amount</label>
+            </div>
+          </form>
+
+          <h4>eGift Voucher </h4>
+
+          <h1 class="deep-orange-text">
+            <span style="font-size: 16px;vertical-align:top ">{{voucherCode}}</span>
+          </h1>
+          <button type='button' name='generate' class='btn btn-large waves-effect deep-orange' (click)="generateCode()">Generate</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
