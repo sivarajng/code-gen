@@ -148,9 +148,9 @@ function validate(code, opts) {
 function randomSymbol() {
     let strlen:any = symbolsArr.length;
     let mathran:any = Math.random();
-    let parint = mathran * strlen;
+    let parint:any = mathran * strlen;
 
-    return symbolsArr[parint];
+    return symbolsArr[parseInt(parint)];
 }
 
 // returns the checksum character for this (data/part) combination
